@@ -64,3 +64,4 @@ def show_tasks():
         for idx, task in enumerate(completed_tasks, start=1):
             print(f"  {idx}. {task['title']} ({task['description'][:40]})") # 描述部份最多顯示 40 個字元
     print()
+    
