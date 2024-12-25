@@ -7,10 +7,8 @@ from PyQt6.QtGui import QFont
 class ToDoApp(QWidget):
     def __init__(self):
         super().__init__()
-        # 載入 UI
         uic.loadUi('todo_app.ui', self)
 
-        # 連接功能
         self.addButton.clicked.connect(self.add_task)
         self.deleteButton.clicked.connect(self.delete_task)
         self.markCompleteButton.clicked.connect(self.mark_complete)
@@ -18,10 +16,9 @@ class ToDoApp(QWidget):
     def add_task(self):
         task = self.taskInput.text()
         if task.strip():
-            # 获取当前时间，并格式化为字符串
             current_time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
             task_with_time = f"{task} (Added: {current_time})"
-            item = QListWidgetItem(task_with_time)  # 创建任务项
+            item = QListWidgetItem(task_with_time) 
             self.taskList.addItem(item)
             self.taskInput.clear()
         else:
@@ -37,12 +34,11 @@ class ToDoApp(QWidget):
     def mark_complete(self):
         selected_task = self.taskList.currentItem()
         if selected_task:
-            # 获取当前字体并设置删除线
             font = selected_task.font()
-            font.setStrikeOut(True)  # 设置删除线
+            font.setStrikeOut(True)
             selected_task.setFont(font)
-            # 将任务标记为已完成
-            selected_task.setText(f"{selected_task.text()} (Completed)")
+
+            selected_task.setText(f"{selected_task.text()}")
         else:
             QMessageBox.warning(self, "Error", "No task selected")
 
