@@ -5,10 +5,8 @@ import sys
 class ToDoApp(QWidget):
     def __init__(self):
         super().__init__()
-        # 載入 UI
         uic.loadUi('todo_app.ui', self)
 
-        # 連接功能
         self.addButton.clicked.connect(self.add_task)
         self.deleteButton.clicked.connect(self.delete_task)
         self.markCompleteButton.clicked.connect(self.mark_complete)
